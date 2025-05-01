@@ -1,5 +1,6 @@
 #include <stdio.h> 
 
+
 int main (){
 //Xadrez - Desafio Nível Aventureiro
 //Torre, Bispo, Rainha e cavalo
