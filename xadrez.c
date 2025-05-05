@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 //Desafio Xadrez - Nível Mestre
 
 //Bispo: 5 Casas Diagonal (direita,cima)
