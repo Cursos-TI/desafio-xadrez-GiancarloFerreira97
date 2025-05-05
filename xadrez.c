@@ -1,68 +1,70 @@
-#include <stdio.h> 
+#include <stdio.h>
+//Desafio Xadrez - Nível Mestre
 
-
-int main (){
-//Xadrez - Desafio Nível Aventureiro
-//Torre, Bispo, Rainha e cavalo
-//For, While, Do-While & Loop Aninhado
-
-//Torre = 5 casas para a direita
-//Bispo = 5 casas na diagonal para cima e à direita (Cima,Direita)
-//Rainha = 8 casas para a esquerda
-//Cavalo = 2 casas para baixo e 1 casa para a esquerda
-
-//For
-    int TorreAcao = 5; //Definição da variável para o movimento e número de casas movimentadas
-    int i;
-
-    printf("Movimento da Torre: \n");
-    // for (inicialização; condição; incrementação)
-    for (i = 0; i < TorreAcao; i++)
-    {
-        printf("Direita.\n");
+//Bispo: 5 Casas Diagonal (direita,cima)
+void BispoAcao(){ 
+    for (int i = 0; i < 5; i++){
+        printf("Direita, "); 
+        for (int j = 0; j < 1; j++) {
+        printf("Cima.\n");
+        }
     }
+}
 
-//While
-    int BispoAcao = 5; //futuro
-    int CasaBispo = 0; //atual
+//Torre: 5 Casas Direita
+void TorreAcao(int casas){
+    if (casas > 0) {
+        printf("Direita.\n");
+        TorreAcao(casas - 1);
+    }
+}
+
+//Rainha: 8 Casas Esquerda
+void RainhaAcao(int casas){
+    if (casas > 0) {
+        printf("Esquerda.\n");
+        RainhaAcao(casas - 1);
+    }
+}
+
+//Continue e Break / Cavalo: 2 cima, 1 direita (Cima, Cima, Direita)
+void CavaloAcao(){ 
+    int direita = 0;
+    int cima = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        if (cima < 2){
+            printf("Cima.\n");
+            cima++;
+            continue;
+        }
+
+        if (direita < 1){
+            printf("Direita.\n");
+            direita++;
+        }
+
+        if (direita == 1 && cima == 2)
+        break;
+    }
+    
+}
+
+
+
+int main(){
+    printf("Movimento da Torre: \n");
+    TorreAcao(5);
+
+    printf("\nMovimento da Rainha: \n");
+    RainhaAcao(8);
 
     printf("\nMovimento do Bispo: \n");
-    //While (condição-falsa)
-    while (CasaBispo < BispoAcao) 
-    {
-        printf("Direita, Cima.\n");
-        CasaBispo++; //incrementação
-    }
-    
+    BispoAcao(0);
 
-//Do-While
-    printf("\nMovimento da Rainha: \n");
-    int RainhaAcao = 8; //futuro
-    int CasaRainha = 0; //atual 
-
-    do {
-        printf("Esquerda.\n"); //repetição
-        CasaRainha++; //incrementação
-    } while (CasaRainha < RainhaAcao); //condição
-
-
-//Loop Aninhado (For & While)
     printf("\nMovimento do Cavalo: \n");
-    int CavaloAcao1 = 2; //Baixo
-    int CavaloAcao2 = 1; //Esquerda
+    CavaloAcao(0);
 
-
-    for (i = 0; i < CavaloAcao2; i++)
-    {
-        while (i < CavaloAcao1)
-        {
-            i++;
-            printf("Baixo.\n");
-        }
-        
-        printf("Esquerda.\n");
-    }
-
-    
     return 0;
 }
